@@ -13,6 +13,9 @@ const toneClasses: Record<SectionTone, string> = {
   mesh: "bg-background text-text",
 }
 
+const splitPanelPadding =
+  "px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-20"
+
 type PageSectionProps = {
   tone?: SectionTone
   children: ReactNode
@@ -65,7 +68,7 @@ export function SplitSection({
   reverseOnMobile = false,
 }: SplitSectionProps) {
   return (
-    <section className={cn("w-full", className)}>
+    <section className={cn("w-full overflow-hidden", className)}>
       <div
         className={cn(
           "grid lg:grid-cols-2 lg:items-stretch",
@@ -74,23 +77,25 @@ export function SplitSection({
       >
         <div
           className={cn(
-            "relative flex flex-col justify-center overflow-visible",
+            "relative flex flex-col justify-center overflow-hidden lg:overflow-visible",
             toneClasses[leftTone],
-            "px-4 py-16 sm:px-8 lg:px-12 lg:py-20",
+            splitPanelPadding,
             leftPanelClassName,
           )}
         >
-          <div className="mx-auto flex h-full w-full max-w-xl items-center justify-center lg:mx-0">{left}</div>
+          <div className="mx-auto w-full max-w-xl lg:mx-0">{left}</div>
         </div>
         <div
           className={cn(
-            "relative flex items-center justify-center overflow-visible",
+            "relative flex items-center justify-center overflow-hidden lg:overflow-visible",
             toneClasses[rightTone],
-            "px-4 py-16 sm:px-8 lg:px-12 lg:py-20",
+            splitPanelPadding,
             rightPanelClassName,
           )}
         >
-          <div className="mx-auto flex h-full w-full max-w-xl items-center justify-center lg:mx-0">{right}</div>
+          <div className="mx-auto flex w-full max-w-xl items-center justify-center lg:mx-0">
+            {right}
+          </div>
         </div>
       </div>
     </section>

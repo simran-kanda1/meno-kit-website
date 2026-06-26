@@ -12,7 +12,6 @@ import { BrandLogo } from "@/components/BrandLogo"
 import { FaqAccordion } from "@/components/FaqAccordion"
 import { HeroBoxVisual } from "@/components/HeroBoxVisual"
 import { KitFlatlayVisual } from "@/components/KitFlatlayVisual"
-import { JoinWaitlistButton } from "@/components/JoinWaitlistButton"
 import { KeywordMarquee } from "@/components/KeywordMarquee"
 import { PageSection, SplitSection } from "@/components/PageSection"
 import { Reveal, RevealStagger } from "@/components/Reveal"
@@ -110,10 +109,10 @@ export default function HomePage() {
   }
 
   return (
-    <main className="pb-24 sm:pb-0">
+    <main>
       {/* Hero */}
-      <PageSection tone="mesh" innerClassName="!py-20 lg:!py-28">
-        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+      <PageSection tone="mesh" innerClassName="!py-14 sm:!py-20 lg:!py-28">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
           <div className="space-y-9 text-center lg:text-left">
             <Reveal mode="mount" delay={0}>
               <SectionLabel className="mt-6">Community + quarterly kits</SectionLabel>
@@ -289,14 +288,15 @@ export default function HomePage() {
       </PageSection>
 
       {/* Final CTA */}
-      <PageSection tone="mesh" innerClassName="!py-28 sm:!py-36">
+      <PageSection tone="lavender" innerClassName="section-inner-tight !pb-10 sm:!pb-14">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <BrandLogo size="lg" link={false} className="mx-auto" />
-            <h2 className="text-section-title mt-8">
+            <BrandLogo size="md" link={false} className="mx-auto sm:hidden" />
+            <BrandLogo size="lg" link={false} className="mx-auto hidden sm:block" />
+            <h2 className="text-section-title mt-6 sm:mt-8">
               Be the first to know.
             </h2>
-            <p className="text-body-lg mx-auto mt-5 max-w-md">
+            <p className="text-body-lg mx-auto mt-4 max-w-md sm:mt-5">
               Join the waitlist for early access to the community app and our first quarterly Meno Kits.
             </p>
             <WaitlistPillForm
@@ -306,17 +306,11 @@ export default function HomePage() {
               loading={loading}
               message={message}
               status={status}
-              className="mx-auto mt-10 max-w-lg"
+              className="mx-auto mt-8 max-w-lg sm:mt-10"
             />
           </div>
         </Reveal>
       </PageSection>
-
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-surface/95 p-3 backdrop-blur sm:hidden">
-        <JoinWaitlistButton className="h-12 w-full" size="lg">
-          Get notified
-        </JoinWaitlistButton>
-      </div>
     </main>
   )
 }

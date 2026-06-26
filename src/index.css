@@ -35,10 +35,11 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
-    @apply m-0 min-h-screen bg-background text-text antialiased;
+    @apply m-0 min-h-screen overflow-x-clip bg-background text-text antialiased;
     font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
   }
 
@@ -51,21 +52,21 @@
 
 @layer components {
   .section-inner {
-    @apply mx-auto w-full max-w-6xl px-4 py-20 sm:px-8 sm:py-28;
+    @apply mx-auto w-full max-w-6xl px-4 py-14 sm:px-8 sm:py-20 lg:py-28;
   }
 
   .section-inner-tight {
-    @apply mx-auto w-full max-w-6xl px-4 py-16 sm:px-8 sm:py-24;
+    @apply mx-auto w-full max-w-6xl px-4 py-12 sm:px-8 sm:py-20 lg:py-24;
   }
 
   .text-hero {
     font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    @apply text-[2.75rem] leading-[1.04] text-primaryDark sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02];
+    @apply text-[2.35rem] leading-[1.06] text-primaryDark sm:text-6xl lg:text-[4.5rem] lg:leading-[1.02];
   }
 
   .text-section-title {
     font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    @apply text-4xl leading-[1.08] text-primaryDark sm:text-5xl lg:text-[3.5rem];
+    @apply text-3xl leading-[1.1] text-primaryDark sm:text-5xl lg:text-[3.5rem] lg:leading-[1.08];
   }
 
   .text-body-lg {
@@ -74,7 +75,7 @@
 
   .text-stat {
     font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    @apply text-5xl leading-none text-primaryDark sm:text-6xl;
+    @apply text-4xl leading-none text-primaryDark sm:text-5xl lg:text-6xl;
   }
 }
 

@@ -24,7 +24,7 @@ export function SiteNav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-surface/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 w-full border-b border-border/60 bg-surface/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-md">
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-4 sm:px-8">
         <BrandLogo size="md" showWordmark />
 

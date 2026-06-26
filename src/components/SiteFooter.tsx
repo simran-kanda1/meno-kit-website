@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 import { BrandLogo } from "@/components/BrandLogo"
 import { JoinWaitlistButton } from "@/components/JoinWaitlistButton"
 import { BRAND_EMAIL } from "@/lib/brand"
+import { cn } from "@/lib/utils"
 
 const footerLinks = [
   { label: "Community", to: "/community" },
@@ -14,8 +15,16 @@ const footerLinks = [
 ]
 
 export function SiteFooter() {
+  const { pathname } = useLocation()
+  const homeMobileBar = pathname === "/"
+
   return (
-    <footer className="border-t border-border bg-surface">
+    <footer
+      className={cn(
+        "border-t border-border bg-surface",
+        homeMobileBar && "pb-[calc(5.5rem+env(safe-area-inset-bottom,0px))] sm:pb-0",
+      )}
+    >
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-8 md:flex-row md:items-start md:justify-between">
         <div className="space-y-3">
           <BrandLogo size="md" />

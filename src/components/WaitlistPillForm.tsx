@@ -28,7 +28,7 @@ export function WaitlistPillForm({
 }: WaitlistPillFormProps) {
   return (
     <form id={id} onSubmit={onSubmit} className={cn("w-full max-w-md", className)}>
-      <div className="flex items-center rounded-full border border-border bg-surface p-1.5 shadow-[0_8px_28px_-14px_rgba(42,34,56,0.18)]">
+      <div className="flex flex-col gap-2 rounded-[1.25rem] border border-border bg-surface p-2 shadow-[0_8px_28px_-14px_rgba(42,34,56,0.18)] sm:flex-row sm:items-center sm:rounded-full sm:p-1.5">
         <input
           type="email"
           placeholder="Enter your email"
@@ -36,9 +36,9 @@ export function WaitlistPillForm({
           onChange={(e) => onEmailChange(e.target.value)}
           autoComplete="email"
           required
-          className="min-w-0 flex-1 bg-transparent px-5 py-3 text-base text-text outline-none placeholder:text-textMuted"
+          className="min-w-0 flex-1 bg-transparent px-4 py-3 text-base text-text outline-none placeholder:text-textMuted sm:px-5"
         />
-        <Button type="submit" disabled={loading} className="shrink-0 rounded-full px-6">
+        <Button type="submit" disabled={loading} className="h-11 w-full shrink-0 rounded-full px-6 sm:w-auto">
           {loading ? "Saving..." : buttonLabel}
         </Button>
       </div>

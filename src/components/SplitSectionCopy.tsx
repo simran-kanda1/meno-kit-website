@@ -32,15 +32,15 @@ export function SplitSectionCopy({
       <SectionLabel>{label}</SectionLabel>
       <h2 className="text-section-title mt-5">{title}</h2>
       <p className="text-body-lg mt-6">{description}</p>
-      <div className="mt-12 grid grid-cols-2 gap-10 border-t-2 border-border pt-10">
+      <div className="mt-8 grid grid-cols-2 gap-6 border-t-2 border-border pt-8 sm:mt-12 sm:gap-10 sm:pt-10">
         {stats.map((stat) => (
           <div key={stat.label}>
             <p className="text-stat">{stat.value}</p>
-            <p className="mt-2 text-base text-textMuted">{stat.label}</p>
+            <p className="mt-1.5 text-sm text-textMuted sm:mt-2 sm:text-base">{stat.label}</p>
           </div>
         ))}
       </div>
-      <p className="mt-10 text-base text-textMuted">{tags}</p>
+      <p className="mt-8 text-balance text-sm text-textMuted sm:mt-10 sm:text-base">{tags}</p>
       <Link
         to={linkTo}
         className="mt-8 inline-flex items-center gap-1.5 text-base font-medium text-primaryDark transition-opacity hover:opacity-70"

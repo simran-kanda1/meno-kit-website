@@ -39,7 +39,7 @@ export function BrandLogo({
       {showWordmark && (
         <span
           className={cn(
-            "font-display text-lg font-semibold uppercase leading-none tracking-[0.18em] transition-colors duration-200",
+            "font-display text-base font-semibold uppercase leading-none tracking-[0.14em] transition-colors duration-200 sm:text-lg sm:tracking-[0.18em]",
             variant === "light"
               ? "text-white group-hover:text-white/85"
               : "text-lavenderDeep group-hover:text-primary",
