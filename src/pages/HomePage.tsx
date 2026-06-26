@@ -290,9 +290,12 @@ export default function HomePage() {
       {/* Final CTA */}
       <PageSection tone="lavender" innerClassName="section-inner-tight !pb-10 sm:!pb-14">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
-            <BrandLogo size="md" link={false} className="mx-auto sm:hidden" />
-            <BrandLogo size="lg" link={false} className="mx-auto hidden sm:block" />
+          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+            <BrandLogo
+              link={false}
+              size="lg"
+              imageClassName="h-12 w-12 sm:h-16 sm:w-16"
+            />
             <h2 className="text-section-title mt-6 sm:mt-8">
               Be the first to know.
             </h2>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Meno-Kit Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --background: #F5F0E8;
+      --surface: #FFFCF8;
+      --primary: #7B5FA8;
+      --primary-dark: #2A2238;
+      --primary-light: #E8DDF5;
+      --lavender-panel: #D4C4E8;
+      --lavender-deep: #B8A0D4;
+      --text: #2A2238;
+      --text-soft: #574F63;
+      --text-muted: #8B8396;
+      --border: #D9CFE6;
+      --success: #5E9A86;
+      --error: #C4667A;
+    }
+
+    @page {
+      margin: 1.2cm 1.5cm;
+      size: A4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.55;
+      color: var(--text);
+      background: white;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cover {
+      page-break-after: always;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--background);
+      padding: 3rem;
+      border-bottom: 3px solid var(--primary);
+    }
+
+    .cover h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 42pt;
+      font-weight: 500;
+      color: var(--primary-dark);
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cover .subtitle {
+      font-size: 14pt;
+      color: var(--text-soft);
+      max-width: 28rem;
+      margin: 0 auto 2rem;
+    }
+
+    .cover .meta {
+      font-size: 9pt;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 20pt;
+      font-weight: 500;
+      color: var(--primary-dark);
+      margin: 1.8rem 0 0.75rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 2px solid var(--primary-light);
+      page-break-after: avoid;
+    }
+
+    h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 13pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 1.25rem 0 0.5rem;
+      page-break-after: avoid;
+    }
+
+    p { margin: 0.4rem 0 0.75rem; color: var(--text-soft); }
+
+    section { margin-bottom: 1rem; }
+
+    .section-label {
+      font-size: 8.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-label span { color: var(--primary); opacity: 0.6; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5rem 0 1rem;
+      font-size: 9.5pt;
+      page-break-inside: avoid;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.6rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) td { background: #faf8f5; }
+
+    .swatch {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.08);
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    code, .mono {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 8.5pt;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+    }
+
+    pre {
+      background: var(--primary-dark);
+      color: #e8e4f0;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 8pt;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+      white-space: pre-wrap;
+      page-break-inside: avoid;
+    }
+
+    ul { margin: 0.25rem 0 0.75rem; padding-left: 1.25rem; color: var(--text-soft); }
+    li { margin-bottom: 0.25rem; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 1rem;
+      page-break-inside: avoid;
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--primary-dark);
+      color: white;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 9pt;
+      font-weight: 500;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .page-break { page-break-before: always; }
+
+    .footer-note {
+      margin-top: 2rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-size: 8.5pt;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cover">
+    <p class="section-label"><span>—</span> Brand guidelines</p>
+    <h1>Meno-Kit</h1>
+    <p class="subtitle">Design system reference for website &amp; mobile app — colors, typography, components, splash screen, and motion.</p>
+    <p class="meta">meno-kit.com · hello@meno-kit.com</p>
+  </div>
+
+  <section>
+    <h2>Brand feel</h2>
+    <p>Warm, editorial, lavender-toned. Cream backgrounds, serif headlines, soft purple accents. Calm and premium — not clinical, not startup-neon.</p>
+    <ul>
+      <li><strong>Logo:</strong> circular lavender “m” with botanical detail on black (<code>menokit-logo.png</code>)</li>
+      <li><strong>Wordmark:</strong> MENO-KIT — uppercase serif, wide letter-spacing</li>
+      <li><strong>Tagline:</strong> Menopause support that adapts with you.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Color palette</h2>
+
+    <h3>Core</h3>
+    <table>
+      <tr><th>Token</th><th>Hex</th><th>Use</th></tr>
+      <tr><td>background</td><td><span class="swatch" style="background:#F5F0E8"></span>#F5F0E8</td><td>Page / splash base (warm cream)</td></tr>
+      <tr><td>surface</td><td><span class="swatch" style="background:#FFFCF8"></span>#FFFCF8</td><td>Cards, nav, inputs (warm white)</td></tr>
+      <tr><td>primary</td><td><span class="swatch" style="background:#7B5FA8"></span>#7B5FA8</td><td>Brand purple, accents, chips</td></tr>
+      <tr><td>primaryDark</td><td><span class="swatch" style="background:#2A2238"></span>#2A2238</td><td>Headlines, primary buttons</td></tr>
+      <tr><td>primaryLight</td><td><span class="swatch" style="background:#E8DDF5"></span>#E8DDF5</td><td>Hover states, soft fills</td></tr>
+      <tr><td>secondary</td><td><span class="swatch" style="background:#DDD0EE"></span>#DDD0EE</td><td>Secondary lavender</td></tr>
+      <tr><td>accent</td><td><span class="swatch" style="background:#9B7EC8"></span>#9B7EC8</td><td>Lighter purple accent</td></tr>
+    </table>
+
+    <h3>Lavender panels</h3>
+    <table>
+      <tr><th>Token</th><th>Hex</th><th>Use</th></tr>
+      <tr><td>lavender</td><td><span class="swatch" style="background:#DDD0EE"></span>#DDD0EE</td><td>General lavender</td></tr>
+      <tr><td>lavenderPanel</td><td><span class="swatch" style="background:#D4C4E8"></span>#D4C4E8</td><td>Section backgrounds (CTA blocks)</td></tr>
+      <tr><td>lavenderDeep</td><td><span class="swatch" style="background:#B8A0D4"></span>#B8A0D4</td><td>Wordmark, decorative purple</td></tr>
+    </table>
+
+    <h3>Text</h3>
+    <table>
+      <tr><th>Token</th><th>Hex</th><th>Use</th></tr>
+      <tr><td>text</td><td><span class="swatch" style="background:#2A2238"></span>#2A2238</td><td>Primary body</td></tr>
+      <tr><td>textSoft</td><td><span class="swatch" style="background:#574F63"></span>#574F63</td><td>Body paragraphs</td></tr>
+      <tr><td>textMuted</td><td><span class="swatch" style="background:#8B8396"></span>#8B8396</td><td>Labels, nav, placeholders</td></tr>
+    </table>
+
+    <h3>UI &amp; semantic</h3>
+    <table>
+      <tr><th>Token</th><th>Hex</th><th>Use</th></tr>
+      <tr><td>border</td><td><span class="swatch" style="background:#D9CFE6"></span>#D9CFE6</td><td>Borders, dividers</td></tr>
+      <tr><td>success</td><td><span class="swatch" style="background:#5E9A86"></span>#5E9A86</td><td>Success messages</td></tr>
+      <tr><td>warning</td><td><span class="swatch" style="background:#D6A56F"></span>#D6A56F</td><td>Warnings</td></tr>
+      <tr><td>error</td><td><span class="swatch" style="background:#C4667A"></span>#C4667A</td><td>Errors</td></tr>
+      <tr><td>chipBg</td><td><span class="swatch" style="background:#EDE4F7"></span>#EDE4F7</td><td>Inactive chips</td></tr>
+      <tr><td>chipActive</td><td><span class="swatch" style="background:#7B5FA8"></span>#7B5FA8</td><td>Active chips</td></tr>
+      <tr><td>cardShadow</td><td>rgba(42,34,56,0.08)</td><td>Soft shadows</td></tr>
+    </table>
+
+    <h3>Mesh gradient blobs (hero / splash)</h3>
+    <table>
+      <tr><th>Blob</th><th>Color</th><th>Opacity</th></tr>
+      <tr><td>1</td><td>#c9b3e8</td><td>55%</td></tr>
+      <tr><td>2</td><td>#b8a0dc</td><td>45%</td></tr>
+      <tr><td>3</td><td>#d4c2ed</td><td>50%</td></tr>
+      <tr><td>4</td><td>#e2d4f4</td><td>60%</td></tr>
+    </table>
+    <p>Heavy blur (64–80px), large circles drifting slowly (20–28s loops).</p>
+  </section>
+
+  <section class="page-break">
+    <h2>Typography</h2>
+
+    <h3>Font families</h3>
+    <table>
+      <tr><th>Role</th><th>Font</th><th>Fallbacks</th></tr>
+      <tr><td>Display (h1, h2, stats)</td><td>Cormorant Garamond</td><td>Georgia, Times New Roman, serif</td></tr>
+      <tr><td>Body / UI</td><td>DM Sans</td><td>Segoe UI, system-ui, sans-serif</td></tr>
+    </table>
+    <p><strong>Google Fonts weights:</strong> Cormorant Garamond 400, 500, 600 (incl. italic) · DM Sans 400, 500, 600</p>
+    <p><strong>Display settings:</strong> letter-spacing −0.025em · font-weight 500</p>
+
+    <h3>Type scale</h3>
+    <table>
+      <tr><th>Style</th><th>Font</th><th>Size (mobile)</th><th>Color</th></tr>
+      <tr><td>Hero</td><td>Cormorant Garamond</td><td>37.6px (2.35rem)</td><td>primaryDark; italic accents in primary</td></tr>
+      <tr><td>Section title</td><td>Cormorant Garamond</td><td>30px (1.875rem)</td><td>primaryDark</td></tr>
+      <tr><td>Stat number</td><td>Cormorant Garamond</td><td>36px</td><td>primaryDark</td></tr>
+      <tr><td>Body large</td><td>DM Sans</td><td>16px</td><td>textSoft</td></tr>
+      <tr><td>Section label</td><td>DM Sans</td><td>14px medium</td><td>textMuted, UPPERCASE, tracking 0.16em, prefix —</td></tr>
+      <tr><td>Nav links</td><td>DM Sans</td><td>13px medium</td><td>textMuted → primaryDark active</td></tr>
+      <tr><td>Wordmark</td><td>Cormorant Garamond</td><td>16px semibold</td><td>lavenderDeep, UPPERCASE, tracking 0.14em</td></tr>
+      <tr><td>Button</td><td>DM Sans</td><td>14px medium</td><td>white on primaryDark</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Splash screen</h2>
+    <p>Shown once per browser session before the site loads (~1s hold, then 450ms fade). Skipped if user prefers reduced motion.</p>
+
+    <div class="card">
+      <p><strong>Background:</strong> #F5F0E8 + subtle mesh gradient (4 blobs at 80% opacity)</p>
+      <p><strong>Logo:</strong> menokit-logo.png, centered — 112×112px mobile, 128×128px desktop</p>
+      <p><strong>z-index:</strong> 200 (full-screen overlay)</p>
+    </div>
+
+    <h3>Animations</h3>
+    <table>
+      <tr><th>Phase</th><th>Duration</th><th>Easing</th><th>Effect</th></tr>
+      <tr><td>Screen enter</td><td>500ms</td><td>cubic-bezier(0.22, 1, 0.36, 1)</td><td>Fade in</td></tr>
+      <tr><td>Logo enter</td><td>700ms</td><td>same</td><td>Fade in + scale 0.92 → 1</td></tr>
+      <tr><td>Screen exit</td><td>450ms</td><td>cubic-bezier(0.4, 0, 0.2, 1)</td><td>Fade out</td></tr>
+    </table>
+    <p><strong>App equivalent:</strong> native splash with cream bg + centered logo → fade into main app.</p>
+  </section>
+
+  <section>
+    <h2>Section backgrounds</h2>
+    <table>
+      <tr><th>Tone</th><th>Background</th><th>Text</th></tr>
+      <tr><td>cream</td><td>#F5F0E8</td><td>text</td></tr>
+      <tr><td>white</td><td>#FFFCF8</td><td>text</td></tr>
+      <tr><td>lavender</td><td>#D4C4E8</td><td>text</td></tr>
+      <tr><td>plum</td><td>#2A2238</td><td>white</td></tr>
+      <tr><td>mesh</td><td>#F5F0E8 + animated blobs</td><td>text</td></tr>
+    </table>
+    <p><strong>Spacing:</strong> 56px vertical (mobile) · 80px (tablet) · 112px (desktop) · horizontal 16px / 32px · max width 1152px centered.</p>
+  </section>
+
+  <section class="page-break">
+    <h2>Components</h2>
+
+    <h3>Buttons <span class="pill">Pill shape</span></h3>
+    <p>Border-radius: 9999px (full pill). Transition: 300ms. Focus ring: 2px primaryDark at 30% opacity.</p>
+    <table>
+      <tr><th>Variant</th><th>Background</th><th>Text</th><th>Hover</th></tr>
+      <tr><td>Primary</td><td>#2A2238</td><td>white</td><td>#1f1a3d</td></tr>
+      <tr><td>Secondary</td><td>white 80%</td><td>primaryDark</td><td>solid white + border</td></tr>
+      <tr><td>Ghost</td><td>transparent</td><td>textSoft</td><td>white 50%</td></tr>
+    </table>
+    <p><strong>Sizes:</strong> Default 44px height · Large 48px height</p>
+
+    <h3>Text inputs</h3>
+    <ul>
+      <li>Height 44px · border-radius 12px</li>
+      <li>Border 1px #D9CFE6 · background white</li>
+      <li>Placeholder textMuted 80% · focus ring primary 35%</li>
+    </ul>
+
+    <h3>Pill email form (waitlist)</h3>
+    <ul>
+      <li>Container: surface bg, border, shadow 0 8px 28px -14px rgba(42,34,56,0.18)</li>
+      <li>Mobile: rounded 20px stacked · Desktop: full pill row</li>
+    </ul>
+
+    <h3>Cards</h3>
+    <ul>
+      <li>Border-radius 16px · background surface · border 1px #D9CFE6</li>
+      <li>Shadow: 0 12px 32px -12px rgba(123, 92, 246, 0.22)</li>
+      <li>Padding 24px</li>
+    </ul>
+
+    <h3>Navigation bar</h3>
+    <ul>
+      <li>Height 72px + safe area top · surface 90% + backdrop blur</li>
+      <li>Border-bottom border 60% · fixed top</li>
+      <li>Logo 40×40px + MENO-KIT wordmark</li>
+    </ul>
+
+    <h3>Section label (eyebrow)</h3>
+    <p class="mono">— COMMUNITY + QUARTERLY KITS</p>
+    <p>14px medium uppercase · textMuted · dash in primary 60%</p>
+
+    <h3>Logo sizes</h3>
+    <table>
+      <tr><th>Size</th><th>Dimensions</th></tr>
+      <tr><td>sm</td><td>32 × 32</td></tr>
+      <tr><td>md</td><td>40 × 40</td></tr>
+      <tr><td>lg</td><td>64 × 64</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Borders &amp; shadows</h2>
+    <pre>border:        1px solid #D9CFE6
+card shadow:   0 12px 32px -12px rgba(123, 92, 246, 0.22)
+form shadow:   0 8px 28px -14px rgba(42, 34, 56, 0.18)
+light shadow:  0 4px 20px -12px rgba(42, 34, 56, 0.12)
+
+Corner radii:
+  Buttons → full pill (9999px)
+  Cards / accordion → 16px
+  Inputs → 12px
+  Pill form → 20px mobile, pill desktop</pre>
+  </section>
+
+  <section>
+    <h2>Motion</h2>
+    <ul>
+      <li><strong>Primary easing:</strong> cubic-bezier(0.22, 1, 0.36, 1)</li>
+      <li><strong>Scroll reveal:</strong> fade up 32px + 4px blur → clear, 850ms</li>
+      <li><strong>Mesh blobs:</strong> 20–28s infinite drift</li>
+      <li><strong>Reduced motion:</strong> disable all animations</li>
+    </ul>
+  </section>
+
+  <section class="page-break">
+    <h2>App porting snippets</h2>
+
+    <h3>React Native / Expo</h3>
+    <pre>export const colors = {
+  background: '#F5F0E8',
+  surface: '#FFFCF8',
+  primary: '#7B5FA8',
+  primaryDark: '#2A2238',
+  primaryLight: '#E8DDF5',
+  lavenderPanel: '#D4C4E8',
+  text: '#2A2238',
+  textSoft: '#574F63',
+  textMuted: '#8B8396',
+  border: '#D9CFE6',
+  success: '#5E9A86',
+  error: '#C4667A',
+};
+
+export const fonts = {
+  display: 'CormorantGaramond-Medium',
+  body: 'DMSans-Regular',
+};</pre>
+
+    <h3>SwiftUI</h3>
+    <pre>struct MenoKitColors {
+    static let background = Color(hex: "F5F0E8")
+    static let surface = Color(hex: "FFFCF8")
+    static let primary = Color(hex: "7B5FA8")
+    static let primaryDark = Color(hex: "2A2238")
+}</pre>
+
+    <h3>Flutter</h3>
+    <pre>class MenoKitTheme {
+  static const background = Color(0xFFF5F0E8);
+  static const primaryDark = Color(0xFF2A2238);
+  static const primary = Color(0xFF7B5FA8);
+}</pre>
+  </section>
+
+  <section>
+    <h2>Asset checklist</h2>
+    <table>
+      <tr><th>Asset</th><th>File</th><th>Use</th></tr>
+      <tr><td>Logo (full)</td><td>public/menokit-logo.png</td><td>Splash, nav, app icon source</td></tr>
+      <tr><td>Favicon</td><td>public/favicon.png</td><td>Small icon reference</td></tr>
+      <tr><td>App icon</td><td>derive from logo</td><td>iOS / Android store icons</td></tr>
+    </table>
+
+    <h3>Voice &amp; copy</h3>
+    <ul>
+      <li><strong>Tagline:</strong> Menopause support that adapts with you.</li>
+      <li><strong>Description:</strong> Stigma-free community and quarterly care boxes for women navigating perimenopause and post menopause.</li>
+      <li><strong>CTAs:</strong> Get notified · Notify me · Join the waitlist</li>
+      <li><strong>Email:</strong> hello@meno-kit.com</li>
+    </ul>
+  </section>
+
+  <p class="footer-note">Meno-Kit Design System · Generated from meno-kit-coming-soon codebase · meno-kit.com</p>
+
+</body>
+</html>
